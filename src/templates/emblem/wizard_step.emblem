@@ -1,0 +1,2 @@
+if controller.isWizardState
+  EmberWizard.DefaultStepView templateNameBinding="controller.wizardStep.options.templateName"

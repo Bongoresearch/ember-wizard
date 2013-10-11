@@ -1,0 +1,37 @@
+{
+    "name": "ember-wizard",
+    "version": "1.0.0",
+    "description": "An ember wizard",
+    "main": "dist/ember-wizard.js",
+    "author": "Opak Alex <a.opak@roundscope.com>",
+    "license": "MIT",
+
+    "keywords": [
+        "ember",
+        "wizard"
+    ],
+
+    "bugs": {
+        "url": "https://github.com/roundscope/ember-wizard/issues"
+    },
+
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/roundscope/ember-wizard.git"
+    },
+
+    "devDependencies": [
+        "grunt-contrib-coffee",
+        "grunt-contrib-uglify",
+        "grunt-contrib-jasmine",
+        "grunt-emblem"
+    ],
+
+    "engines": {
+        "node": ">=v0.10.1"
+    }
+}

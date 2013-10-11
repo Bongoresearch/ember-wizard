@@ -1,0 +1,10 @@
+.arrow
+.content
+  .h4
+    == view.title
+  each paragraph in view.content
+    p.text-small
+      == paragraph
+  .nav
+    a.red-link href="#" click="nextStep target='view'" = view.nextLinkTitle
+    a.grey-link href="#" click="exitWizard target='view'" = view.exitLinkTitle
