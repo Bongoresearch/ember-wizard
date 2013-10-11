@@ -14,12 +14,11 @@ module.exports = function(grunt) {
                         'src/routes/route.coffee',
                         'src/views/base_step_view.coffee',
                         'src/views/default_step_view.coffee'
-                    ] //,
+                    ],
 
-//                    'spec/ember-wizard_spec.js': [
-//                        'spec/env.coffee',
-//                        'spec/*.coffee'
-//                    ]
+                    'spec/ember-wizard_spec.js': [
+                        'spec/*.coffee'
+                    ]
                 }
             }
         },
@@ -48,7 +47,23 @@ module.exports = function(grunt) {
                 src: ['dist/ember-wizard.js', 'src/templates/javascript/templates.js'],
                 dest: 'dist/ember-wizard.min.js'
             }
+        },
+
+        jasmine: {
+            pivotal: {
+                src: [
+                    'vendor/jquery.js',
+                    'vendor/handlebars.js',
+                    'vendor/ember.js',
+                    'dist/ember-wizard.js'
+                ],
+
+                options: {
+                    specs: 'spec/ember-wizard_spec.js'
+                }
+            }
         }
+
 
     });
 
@@ -58,5 +73,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-emblem');
 
     grunt.registerTask('default', ['emblem', 'coffee', 'uglify']);
-//    grunt.registerTask('spec', ['coffee', 'jasmine:pivotal']);
+    grunt.registerTask('spec', ['coffee', 'jasmine:pivotal']);
 };
