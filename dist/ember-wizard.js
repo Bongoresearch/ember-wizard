@@ -78,37 +78,55 @@
     wizardStep: (function() {
       return EmberWizard.StepDSL.wizard[this._controllerName()][0];
     }).property(),
-    _controllerName: function() {
-      return this._debugContainerKey.replace('controller:', '');
+    isLastStep: (function() {
+      var index;
+      index = EmberWizard.StepDSL.wizard[this._controllerName()].indexOf(this.get('wizardStep'));
+      if (EmberWizard.StepDSL.wizard[this._controllerName()][index + 1]) {
+        return false;
+      }
+      return true;
+    }).property('wizardStep'),
+    isFinishedStep: (function() {
+      if (!this.get('isLastStep')) {
+        return false;
+      }
+      if (!this.nextController()) {
+        return true;
+      }
+      return false;
+    }).property('wizardStep'),
+    nextController: function() {
+      var index;
+      if (Ember.keys(EmberWizard.StepDSL.wizard).length === 1) {
+        return false;
+      }
+      index = Ember.keys(EmberWizard.StepDSL.wizard).indexOf(this._controllerName());
+      return Ember.keys(EmberWizard.StepDSL.wizard)[index + 1];
+    },
+    nextControllerStepObject: function() {
+      var controller;
+      controller = this.nextController();
+      if (!controller) {
+        return;
+      }
+      return EmberWizard.StepDSL.wizard[controller][0];
     },
     nextStepObject: function() {
       var index, next;
       index = EmberWizard.StepDSL.wizard[this._controllerName()].indexOf(this.get('wizardStep'));
-      if (EmberWizard.StepDSL.wizard[this._controllerName()][index + 1]) {
+      if (!this.get('isLastStep')) {
         return this.set('wizardStep', EmberWizard.StepDSL.wizard[this._controllerName()][index + 1]);
       } else {
-        next = this._nextController();
+        next = this.nextControllerStepObject();
         if (next) {
-          return this.transitionToRoute(next.route);
+          return this.transitionToRoute(next.options.route);
         } else {
           return this.set('isWizardState', false);
         }
       }
     },
-    isLastStep: function() {
-      var index;
-      index = EmberWizard.StepDSL.wizard[this._controllerName()].indexOf(this.get('wizardStep'));
-      if (EmberWizard.StepDSL.wizard[this._controllerName()][index + 1]) {
-        return false;
-      }
-    },
-    _nextController: function() {
-      var index;
-      if (EmberWizard.keys(EmberWizard.StepDSL.wizard).length === 1) {
-        return false;
-      }
-      index = Ember.keys(EmberWizard.StepDSL.wizard).indexOf(this._controllerName());
-      return Ember.keys(EmberWizard.StepDSL.wizard)[index + 1];
+    _controllerName: function() {
+      return this._debugContainerKey.replace('controller:', '');
     }
   });
 

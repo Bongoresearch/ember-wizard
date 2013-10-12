@@ -14,25 +14,38 @@ EmberWizard.StepMixin = Ember.Mixin.create
     EmberWizard.StepDSL.wizard[@_controllerName()][0]
   ).property()
 
-  _controllerName: ->
-    @_debugContainerKey.replace('controller:', '')
+  isLastStep: (->
+    index = EmberWizard.StepDSL.wizard[@_controllerName()].indexOf(@get('wizardStep'))
+    return false if EmberWizard.StepDSL.wizard[@_controllerName()][index+1]
+    true
+  ).property('wizardStep')
+
+  isFinishedStep:(->
+    return false unless @get('isLastStep')
+    return true unless @nextController()
+    false
+  ).property('wizardStep')
+
+  nextController: ->
+    return false if Ember.keys(EmberWizard.StepDSL.wizard).length == 1
+    index = Ember.keys(EmberWizard.StepDSL.wizard).indexOf(@_controllerName())
+    return Ember.keys(EmberWizard.StepDSL.wizard)[index + 1]
+
+  nextControllerStepObject: ->
+    controller = @nextController()
+    return unless controller
+    EmberWizard.StepDSL.wizard[controller][0]
 
   nextStepObject: ->
     index = EmberWizard.StepDSL.wizard[@_controllerName()].indexOf(@get('wizardStep'))
-    if EmberWizard.StepDSL.wizard[@_controllerName()][index+1]
+    if !@get('isLastStep')
       @set('wizardStep', EmberWizard.StepDSL.wizard[@_controllerName()][index+1])
     else
-      next = @_nextController()
+      next = @nextControllerStepObject()
       if next
-        @transitionToRoute(next.route)
+        @transitionToRoute(next.options.route)
       else
         @set('isWizardState', false)
 
-  isLastStep: ->
-    index = EmberWizard.StepDSL.wizard[@_controllerName()].indexOf(@get('wizardStep'))
-    return false if EmberWizard.StepDSL.wizard[@_controllerName()][index+1]
-
-  _nextController: ->
-    return false if EmberWizard.keys(EmberWizard.StepDSL.wizard).length == 1
-    index = Ember.keys(EmberWizard.StepDSL.wizard).indexOf(@_controllerName())
-    return Ember.keys(EmberWizard.StepDSL.wizard)[index + 1]
+  _controllerName: ->
+    @_debugContainerKey.replace('controller:', '')

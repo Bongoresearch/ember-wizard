@@ -64,7 +64,6 @@ module.exports = function(grunt) {
             }
         }
 
-
     });
 
     grunt.loadNpmTasks('grunt-contrib-coffee');
@@ -74,4 +73,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['emblem', 'coffee', 'uglify']);
     grunt.registerTask('spec', ['coffee', 'jasmine:pivotal']);
+    grunt.registerTask('spec-browser', ['coffee', 'jasmine:server']);
 };
