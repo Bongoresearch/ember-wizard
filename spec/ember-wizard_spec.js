@@ -1,4 +1,16 @@
 (function() {
+  describe("EmberWizard.BaseStepView", function() {
+    beforeEach(function() {
+      return this.subject = new TestEnv();
+    });
+    return it('positionClass', function() {
+      return expect(this.subject.baseStepView.get('positionClass')).toEqual('bottom-right');
+    });
+  });
+
+}).call(this);
+
+(function() {
   describe('EmberWizard.StepDSL', function() {
     return it('has 2 steps for test controller', function() {
       var wizard;
@@ -39,6 +51,10 @@
         this._debugContainerKey = type;
         return this.set('wizardStep', EmberWizard.StepDSL.wizard[type][0]);
       };
+      env.baseStepView = EmberWizard.BaseStepView.create({
+        controller: env.testController,
+        container: env.container
+      });
       this.makeSteps();
       return env;
     }
@@ -49,7 +65,8 @@
           this.step('wellcome', {
             route: '/',
             top: 10,
-            left: 10
+            left: 10,
+            pointerPosition: "left"
           });
           return this.step('wellcome2', {
             route: '/wellcome',

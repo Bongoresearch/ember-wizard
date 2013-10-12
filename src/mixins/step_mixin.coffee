@@ -21,7 +21,6 @@ EmberWizard.StepMixin = Ember.Mixin.create
   ).property('wizardStep')
 
   isFinishedStep:(->
-    return false unless @get('isLastStep')
     return true unless @nextController()
     false
   ).property('wizardStep')

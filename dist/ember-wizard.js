@@ -87,9 +87,6 @@
       return true;
     }).property('wizardStep'),
     isFinishedStep: (function() {
-      if (!this.get('isLastStep')) {
-        return false;
-      }
       if (!this.nextController()) {
         return true;
       }
