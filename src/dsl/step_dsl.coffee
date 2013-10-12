@@ -23,7 +23,7 @@ class EmberWizard.StepDSL
     @wizard.push(step)
 
   _defaults: (options) ->
-    options.templateName = "_default_step" unless options.templateName
+    options.templateName ||= "_default_step"
     options
 
 ###

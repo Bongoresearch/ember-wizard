@@ -20,7 +20,7 @@ EmberWizard.BaseStepView = Ember.View.extend
   ).property('pointerPosition')
 
   didInsertElement: ->
-    style = "top: %@; left: %@px;".fmt(@top(), @left())
+    style = "top: %@px; left: %@px;".fmt(@top(), @left())
     @set('style', style)
 
   actions:

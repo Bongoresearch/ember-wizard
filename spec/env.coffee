@@ -17,8 +17,8 @@ class @TestEnv
   makeSteps: ->
     EmberWizard.StepDSL.map ->
       @controller 'test', ->
-        @step 'wellcome', {route: '/', top: 10, left: 10, pointerPosition: "left"}
-        @step 'wellcome2', {route: '/wellcome', top: 10, left: 10}
+        @step 'wellcome', {route: '/', top: 10, left: 10, pointerPosition: "left", class: 'custom'}
+        @step 'wellcome2', {route: '/wellcome', top: 20, left: 20}
 
       @controller 'next', ->
         @step 'next_wellcome', {route: 'next', top: 10, left: 10}

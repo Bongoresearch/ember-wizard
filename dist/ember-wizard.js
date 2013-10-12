@@ -163,7 +163,7 @@
     }).property('pointerPosition'),
     didInsertElement: function() {
       var style;
-      style = "top: %@; left: %@px;".fmt(this.top(), this.left());
+      style = "top: %@px; left: %@px;".fmt(this.top(), this.left());
       return this.set('style', style);
     },
     actions: {
