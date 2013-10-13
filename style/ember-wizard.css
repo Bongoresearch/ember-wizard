@@ -1,0 +1,47 @@
+.shadow {
+    background-color: #fff;
+    opacity: 0.95;
+    position: absolute;
+    width: 2000px;
+    height: 2000px;
+    z-index: 2; }
+
+.intro {
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    max-width: 430px; }
+.intro .arrow {
+    display: block;
+    width: 72px;
+    height: 123px;
+    margin-bottom: 20px;
+    background: url('arrow_green.png') no-repeat 0 0; }
+.intro .text-small {
+    line-height: 1.4; }
+.intro .nav {
+    margin-top: 35px; }
+.intro .red-link {
+    margin-right: 15px; }
+.intro.bottom-right .arrow {
+    transform: rotateX(180deg) rotate(-90deg);
+    -ms-transform: rotateX(180deg) rotate(-90deg);
+    -webkit-transform: rotateX(180deg) rotate(-90deg);
+    margin-bottom: 0; }
+.intro.bottom-right .content {
+    margin-left: 90px; }
+.intro.bottom .arrow {
+    transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    margin-left: 100px; }
+.intro.bottom .content {
+    margin-left: 0; }
+.intro.bottom-left .arrow {
+    transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    margin-left: 200px; }
+.intro.bottom-left .content {
+    margin-left: 0; }
