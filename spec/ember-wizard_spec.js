@@ -16,8 +16,11 @@
     it('_positionLeft', function() {
       return expect(this.subject.baseStepView._positionLeft()).toEqual(1);
     });
-    return it('_positionTop', function() {
+    it('_positionTop', function() {
       return expect(this.subject.baseStepView._positionLeft()).toEqual(1);
+    });
+    return it('next link title', function() {
+      return expect(this.subject.baseStepView.get('nextLinkTitle')).toEqual('next step');
     });
   });
 

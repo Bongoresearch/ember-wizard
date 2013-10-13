@@ -3,15 +3,16 @@
     VERSION: '1.0.0'
   });
 
+  EmberWizard.Config = Ember.Object.create({
+    nextLinkTitle: "next step",
+    exitLinkTitle: "exit from wizard"
+  });
+
 }).call(this);
 
 (function() {
   EmberWizard.StepDSL = (function() {
     StepDSL.wizard = {};
-
-    StepDSL.nextLinkTitle = "next step";
-
-    StepDSL.exitLinkTitle = "exit from wizard";
 
     StepDSL.map = function(fun) {
       this.wizard = {};
@@ -147,8 +148,8 @@
     content: Ember.computed.alias('controller.wizardStep.options.content'),
     htmlContext: Ember.computed.alias('controller.wizardStep.options.htmlContext'),
     pointerPosition: Ember.computed.alias('controller.wizardStep.options.pointerPosition'),
-    nextLinkTitle: EmberWizard.StepDSL.nextLinkTitle,
-    exitLinkTitle: EmberWizard.StepDSL.exitLinkTitle,
+    nextLinkTitle: EmberWizard.Config.get('nextLinkTitle'),
+    exitLinkTitle: EmberWizard.Config.get('exitLinkTitle'),
     attributeBindings: ['style', 'class'],
     classNameBindings: ['positionClass', 'customClass'],
     positionClass: (function() {

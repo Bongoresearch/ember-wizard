@@ -2,9 +2,6 @@ class EmberWizard.StepDSL
 
   @wizard: {}
 
-  @nextLinkTitle: "next step"
-  @exitLinkTitle: "exit from wizard"
-
   @map: (fun) ->
     @wizard = {}
     fun.call(new EmberWizard.StepDSL(@wizard))

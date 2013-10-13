@@ -17,3 +17,6 @@ describe "EmberWizard.BaseStepView", ->
 
   it '_positionTop', ->
     expect(@subject.baseStepView._positionLeft()).toEqual(1)
+
+  it 'next link title', ->
+    expect(@subject.baseStepView.get('nextLinkTitle')).toEqual('next step')
