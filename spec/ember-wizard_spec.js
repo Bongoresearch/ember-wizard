@@ -9,9 +9,6 @@
     it('customClass', function() {
       return expect(this.subject.baseStepView.get('customClass')).toEqual('custom');
     });
-    it('style', function() {
-      return expect(this.subject.baseStepView.get('style')).toEqual('top: 10px; left: 10px;');
-    });
     return it('changeStyle', function() {
       this.subject.testController.nextStepObject();
       return expect(this.subject.baseStepView.get('style')).toEqual('top: 20px; left: 20px;');

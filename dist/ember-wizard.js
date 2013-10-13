@@ -38,9 +38,7 @@
     };
 
     StepDSL.prototype._defaults = function(options) {
-      if (!options.templateName) {
-        options.templateName = "_default_step";
-      }
+      options.templateName || (options.templateName = "_default_step");
       return options;
     };
 
