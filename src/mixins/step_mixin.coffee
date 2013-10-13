@@ -3,6 +3,9 @@ EmberWizard.StepMixin = Ember.Mixin.create
 
   isWizardState: Ember.computed.alias('controllers.application.isWizardState')
 
+  wizardNextLinkTitle: "next step"
+  wizardExitLinkTitle: "exit from wizard"
+
   actions:
     nextStep: ->
       @nextStepObject()

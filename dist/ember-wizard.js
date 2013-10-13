@@ -3,11 +3,6 @@
     VERSION: '1.0.0'
   });
 
-  EmberWizard.Config = Ember.Object.create({
-    nextLinkTitle: "next step",
-    exitLinkTitle: "exit from wizard"
-  });
-
 }).call(this);
 
 (function() {
@@ -66,6 +61,8 @@
   EmberWizard.StepMixin = Ember.Mixin.create({
     needs: ['application'],
     isWizardState: Ember.computed.alias('controllers.application.isWizardState'),
+    wizardNextLinkTitle: "next step",
+    wizardExitLinkTitle: "exit from wizard",
     actions: {
       nextStep: function() {
         return this.nextStepObject();
@@ -148,8 +145,8 @@
     content: Ember.computed.alias('controller.wizardStep.options.content'),
     htmlContext: Ember.computed.alias('controller.wizardStep.options.htmlContext'),
     pointerPosition: Ember.computed.alias('controller.wizardStep.options.pointerPosition'),
-    nextLinkTitle: EmberWizard.Config.get('nextLinkTitle'),
-    exitLinkTitle: EmberWizard.Config.get('exitLinkTitle'),
+    nextLinkTitle: Ember.computed.alias('controller.wizardNextLinkTitle'),
+    exitLinkTitle: Ember.computed.alias('controller.wizardExitLinkTitle'),
     attributeBindings: ['style', 'class'],
     classNameBindings: ['positionClass', 'customClass'],
     positionClass: (function() {

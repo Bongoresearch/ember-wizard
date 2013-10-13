@@ -5,8 +5,8 @@ EmberWizard.BaseStepView = Ember.View.extend
   htmlContext: Ember.computed.alias('controller.wizardStep.options.htmlContext')
   pointerPosition: Ember.computed.alias('controller.wizardStep.options.pointerPosition')
 
-  nextLinkTitle: EmberWizard.Config.get('nextLinkTitle')
-  exitLinkTitle: EmberWizard.Config.get('exitLinkTitle')
+  nextLinkTitle: Ember.computed.alias('controller.wizardNextLinkTitle')
+  exitLinkTitle: Ember.computed.alias('controller.wizardExitLinkTitle')
 
   attributeBindings: ['style', 'class']
   classNameBindings: ['positionClass', 'customClass']
