@@ -11,3 +11,9 @@ describe "EmberWizard.BaseStepView", ->
   it 'changeStyle', ->
     @subject.testController.nextStepObject()
     expect(@subject.baseStepView.get('style')).toEqual('top: 20px; left: 20px;')
+
+  it '_positionLeft', ->
+    expect(@subject.baseStepView._positionLeft()).toEqual(1)
+
+  it '_positionTop', ->
+    expect(@subject.baseStepView._positionLeft()).toEqual(1)
