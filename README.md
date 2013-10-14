@@ -1,7 +1,7 @@
 ember-wizard
 ============
 
-# First create some steps with controllers:
+### First create some steps with controllers:
 
 ```
     EmberWizard.StepDSL.map ->
@@ -41,6 +41,6 @@ ember-wizard
         }
 ```
 
-# Next extend your router from `Ember.Wizard.Route`
-# Your controller must have `EmberWizard.StepMixin`
-#For turn on wizard, you must set to Application Controller or your controller `isWizardState` to true
+### Next extend your router from `Ember.Wizard.Route`
+### Your controller must have `EmberWizard.StepMixin`
+### For turn on wizard, you must set to Application Controller or your controller `isWizardState` to true
