@@ -23,6 +23,12 @@ EmberWizard.StepMixin = Ember.Mixin.create
     true
   ).property('wizardStep')
 
+  isFirstStep:(->
+    index = EmberWizard.StepDSL.wizard[@_controllerName()].indexOf(@get('wizardStep'))
+    return true if !@prevController() && index == 0
+    false
+  ).property('wizardStep')
+
   isFinishedStep:(->
     return true unless @nextController()
     false
@@ -32,6 +38,17 @@ EmberWizard.StepMixin = Ember.Mixin.create
     return false if Ember.keys(EmberWizard.StepDSL.wizard).length == 1
     index = Ember.keys(EmberWizard.StepDSL.wizard).indexOf(@_controllerName())
     return Ember.keys(EmberWizard.StepDSL.wizard)[index + 1]
+
+  prevController: ->
+    return false if Ember.keys(EmberWizard.StepDSL.wizard).length == 1
+    index = Ember.keys(EmberWizard.StepDSL.wizard).indexOf(@_controllerName())
+    return Ember.keys(EmberWizard.StepDSL.wizard)[index - 1]
+
+  prevControllerStepObject: ->
+    controller = @prevController()
+    return unless controller
+    length = EmberWizard.StepDSL.wizard[controller].length
+    EmberWizard.StepDSL.wizard[controller][length-1]
 
   nextControllerStepObject: ->
     controller = @nextController()
@@ -48,6 +65,17 @@ EmberWizard.StepMixin = Ember.Mixin.create
         @transitionToRoute(next.options.route)
       else
         @set('isWizardState', false)
+
+  prevStepObject: ->
+    index = EmberWizard.StepDSL.wizard[@_controllerName()].indexOf(@get('wizardStep'))
+    prev = EmberWizard.StepDSL.wizard[@_controllerName()][index-1]
+    if prev
+      @set('wizardStep', prev)
+    else
+      prev = @prevControllerStepObject()
+      if prev
+        @transitionToRoute(prev.options.route)
+
 
   _controllerName: ->
     @_debugContainerKey.replace('controller:', '')

@@ -119,6 +119,16 @@
       this.subject.testController.nextStepObject();
       return expect(this.subject.testController.get('wizardStep').stepName).toEqual('wellcome2');
     });
+    it('get prev step', function() {
+      this.subject.testController.nextStepObject();
+      this.subject.testController.prevStepObject();
+      return expect(this.subject.testController.get('wizardStep').stepName).toEqual('wellcome');
+    });
+    it('isFirstStep', function() {
+      expect(this.subject.testController.get('isFirstStep')).toBe(true);
+      this.subject.testController.nextStepObject();
+      return expect(this.subject.testController.get('isFirstStep')).toBe(false);
+    });
     it('isLastStep', function() {
       expect(this.subject.testController.get('isLastStep')).toBe(false);
       this.subject.testController.nextStepObject();
@@ -126,6 +136,11 @@
     });
     it('nextController', function() {
       return expect(this.subject.testController.nextController()).toEqual('next');
+    });
+    it('prevController', function() {
+      this.subject.testController.nextStepObject();
+      this.subject.testController.nextStepObject();
+      return expect(this.subject.testController.prevController()).toEqual('test');
     });
     return it('isFinished', function() {
       expect(this.subject.testController.get('isFinishedStep')).toBe(false);
