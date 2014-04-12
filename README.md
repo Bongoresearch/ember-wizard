@@ -44,3 +44,5 @@ ember-wizard
 * Next extend your router from `Ember.Wizard.Route`
 * Your controller must have `EmberWizard.StepMixin`
 * For turn on wizard, you must set to Application Controller or your controller `isWizardState` to true
+
+See tests for more examples
