@@ -1,2 +1,2 @@
 if controller.isWizardState
-  EmberWizard.DefaultStepView templateNameBinding="controller.wizardStep.options.templateName"
+  view 'default_step' templateNameBinding="controller.wizardStep.options.templateName"
