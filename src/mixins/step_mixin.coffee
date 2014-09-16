@@ -25,7 +25,7 @@ EmberWizard.StepMixin = Ember.Mixin.create
 
   isFirstStep:(->
     index = EmberWizard.StepDSL.wizard[@_controllerName()].indexOf(@get('wizardStep'))
-    return true if !@prevController() && index == 0
+    return true if index == 0
     false
   ).property('wizardStep')
 
